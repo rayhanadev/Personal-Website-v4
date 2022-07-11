@@ -1,6 +1,6 @@
 import { connect } from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = `${process.env.MONGODB_URI}${process.env.NODE_ENV}`;
 let cached = global.mongoose;
 
 if (!cached) {
