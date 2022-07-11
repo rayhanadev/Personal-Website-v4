@@ -4,14 +4,14 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 
 import Keyv from 'keyv';
+// eslint-disable-next-line no-unused-vars
 import KeyvRedis from '@keyv/redis';
 import { KeyvAdapter } from '@apollo/utils.keyvadapter';
 
 import schema from '../../graphql/schema.js';
+import { getUserId } from '../../graphql/auth.js';
 import models from '../../database/models/index.js';
 import connect from '../../database/client.js';
-
-import { getUserId } from '../../libs/auth.js';
 
 const REDIS_URL = process.env.REDIS_URL;
 
@@ -27,7 +27,7 @@ const apolloServer = new ApolloServer({
 		};
 	},
 	csrfPrevention: true,
-  cache: new KeyvAdapter(new Keyv(REDIS_URL), {
+	cache: new KeyvAdapter(new Keyv(REDIS_URL), {
 		disableBatchReads: true,
 	}),
 	introspection: true,
@@ -36,11 +36,15 @@ const apolloServer = new ApolloServer({
 			endpoint: '/api/graphql',
 		}),
 		responseCachePlugin({
-	    sessionId: ({ request: { http: { headers } } }) => {
+			sessionId: ({
+				request: {
+					http: { headers },
+				},
+			}) => {
 				const session = headers.get('authorization');
 				return session ? session.split(' ')[1] : null;
 			},
-	  }),
+		}),
 	],
 });
 

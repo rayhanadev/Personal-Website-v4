@@ -25,7 +25,11 @@ export default withPlugins(
 		reactStrictMode: true,
 		swcMinify: true,
 		webpack5: true,
+		poweredByHeader: false,
 		esmExternals: 'loose',
+		eslint: {
+			ignoreDuringBuilds: true,
+		},
 		webpack: (config, { dev, isServer }) => {
 			config.module.rules.push({
 				test: /\.(png|jpe?g|gif|mp4)$/i,

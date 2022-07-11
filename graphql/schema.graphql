@@ -1,12 +1,12 @@
 enum CacheControlScope {
-  PUBLIC
-  PRIVATE
+	PUBLIC
+	PRIVATE
 }
 
 directive @cacheControl(
-  maxAge: Int
-  scope: CacheControlScope
-  inheritMaxAge: Boolean
+	maxAge: Int
+	scope: CacheControlScope
+	inheritMaxAge: Boolean
 ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
 
 type Query {
@@ -32,4 +32,4 @@ type Auth {
 	token: String
 }
 
-union AuthPayload @cacheControl(maxAge: 10, scope: PRIVATE) = Auth | UserError
+union AuthPayload @cacheControl(maxAge: 0) = Auth | UserError

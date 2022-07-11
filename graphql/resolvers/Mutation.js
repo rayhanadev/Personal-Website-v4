@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { customAlphabet } from 'nanoid';
 
+// eslint-disable-next-line no-unused-vars
 import { project } from '../projection/index.js';
 
 const nanoid = customAlphabet('6789BCDFGHJKLMNPQRTWbcdfghjkmnpqrtwz', 10);
@@ -17,6 +18,7 @@ function validateUser(user) {
 	return schema.validate(user);
 }
 
+// eslint-disable-next-line no-unused-vars
 export async function signup(parent, args, context, info) {
 	const { error } = validateUser(args);
 	if (error) {
@@ -42,6 +44,7 @@ export async function signup(parent, args, context, info) {
 	return { token, user };
 }
 
+// eslint-disable-next-line no-unused-vars
 export async function login(parent, { username, password }, context, info) {
 	const user = await context.models.User.findOne({ username });
 	if (!user) return { message: `Invalid username or password.` };
