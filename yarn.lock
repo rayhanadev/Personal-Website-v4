@@ -47,6 +47,25 @@
     "@types/node" "^10.1.0"
     long "^4.0.0"
 
+"@apollo/protobufjs@1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@apollo/protobufjs/-/protobufjs-1.2.4.tgz#d913e7627210ec5efd758ceeb751c776c68ba133"
+  integrity sha512-npVJ9NVU/pynj+SCU+fambvTneJDyCnif738DnZ7pCxdDtzeEz7WkpSIq5wNUmWm5Td55N+S2xfqZ+WP4hDLng==
+  dependencies:
+    "@protobufjs/aspromise" "^1.1.2"
+    "@protobufjs/base64" "^1.1.2"
+    "@protobufjs/codegen" "^2.0.4"
+    "@protobufjs/eventemitter" "^1.1.0"
+    "@protobufjs/fetch" "^1.1.0"
+    "@protobufjs/float" "^1.0.2"
+    "@protobufjs/inquire" "^1.1.0"
+    "@protobufjs/path" "^1.1.2"
+    "@protobufjs/pool" "^1.1.0"
+    "@protobufjs/utf8" "^1.1.0"
+    "@types/long" "^4.0.0"
+    "@types/node" "^10.1.0"
+    long "^4.0.0"
+
 "@apollo/utils.dropunuseddefinitions@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@apollo/utils.dropunuseddefinitions/-/utils.dropunuseddefinitions-1.1.0.tgz#02b04006442eaf037f4c4624146b12775d70d929"
@@ -2112,6 +2131,13 @@ apollo-reporting-protobuf@^3.3.1:
   dependencies:
     "@apollo/protobufjs" "1.2.2"
 
+apollo-reporting-protobuf@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/apollo-reporting-protobuf/-/apollo-reporting-protobuf-3.3.2.tgz#2078c53d3140bc6221c6040c5326623e0c21c8d4"
+  integrity sha512-j1tx9tmkVdsLt1UPzBrvz90PdjAeKW157WxGn+aXlnnGfVjZLIRXX3x5t1NWtXvB7rVaAsLLILLtDHW382TSoQ==
+  dependencies:
+    "@apollo/protobufjs" "1.2.4"
+
 apollo-server-core@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-3.9.0.tgz#44b39e378314cfc0596be7003d3f1f1397c88eea"
@@ -2169,6 +2195,22 @@ apollo-server-plugin-base@^3.6.1:
   dependencies:
     apollo-server-types "^3.6.1"
 
+apollo-server-plugin-base@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-plugin-base/-/apollo-server-plugin-base-3.6.2.tgz#f256e1f274c8fee0d7267b6944f402da71788fb3"
+  integrity sha512-erWXjLOO1u7fxQkbxJ2cwSO7p0tYzNied91I1SJ9tikXZ/2eZUyDyvrpI+4g70kOdEi+AmJ5Fo8ahEXKJ75zdg==
+  dependencies:
+    apollo-server-types "^3.6.2"
+
+apollo-server-plugin-response-cache@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/apollo-server-plugin-response-cache/-/apollo-server-plugin-response-cache-3.7.0.tgz#f63e2f5ce77b27d8e416e47dded6e68efa9c5794"
+  integrity sha512-WeQw+YgV+3+iyCGpK/ycLudp+qmyw1m7dyJ7G0I/6m7Pj4dCY/E/Eoyd9/iCSiEMeagWIGp9fBq3R9VqUHdxFA==
+  dependencies:
+    "@apollo/utils.keyvaluecache" "^1.0.1"
+    apollo-server-plugin-base "^3.6.2"
+    apollo-server-types "^3.6.2"
+
 apollo-server-types@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-3.6.1.tgz#704e5309bd947306030df01f982e36d1d4753eaa"
@@ -2177,6 +2219,16 @@ apollo-server-types@^3.6.1:
     "@apollo/utils.keyvaluecache" "^1.0.1"
     "@apollo/utils.logger" "^1.0.0"
     apollo-reporting-protobuf "^3.3.1"
+    apollo-server-env "^4.2.1"
+
+apollo-server-types@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-3.6.2.tgz#34bb0c335fcce3057cbdf72b3b63da182de6fc84"
+  integrity sha512-9Z54S7NB+qW1VV+kmiqwU2Q6jxWfX89HlSGCGOo3zrkrperh85LrzABgN9S92+qyeHYd72noMDg2aI039sF3dg==
+  dependencies:
+    "@apollo/utils.keyvaluecache" "^1.0.1"
+    "@apollo/utils.logger" "^1.0.0"
+    apollo-reporting-protobuf "^3.3.2"
     apollo-server-env "^4.2.1"
 
 arg@4.1.0:

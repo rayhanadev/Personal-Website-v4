@@ -1,6 +1,7 @@
 import Cors from 'micro-cors';
 import { ApolloServer } from 'apollo-server-micro';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
+import responseCachePlugin from 'apollo-server-plugin-response-cache';
 
 import Keyv from 'keyv';
 import KeyvRedis from '@keyv/redis';
@@ -26,12 +27,20 @@ const apolloServer = new ApolloServer({
 		};
 	},
 	csrfPrevention: true,
-  cache: new KeyvAdapter(new Keyv(REDIS_URL)),
+  cache: new KeyvAdapter(new Keyv(REDIS_URL), {
+		disableBatchReads: true,
+	}),
 	introspection: true,
 	plugins: [
 		ApolloServerPluginLandingPageGraphQLPlayground({
 			endpoint: '/api/graphql',
 		}),
+		responseCachePlugin({
+	    sessionId: ({ request: { http: { headers } } }) => {
+				const session = headers.get('authorization');
+				return session ? session.split(' ')[1] : null;
+			},
+	  }),
 	],
 });
 
