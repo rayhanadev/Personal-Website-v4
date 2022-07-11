@@ -2,11 +2,16 @@ import Cors from 'micro-cors';
 import { ApolloServer } from 'apollo-server-micro';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 
+import Keyv from 'keyv';
+import { KeyvAdapter } from '@apollo/utils.keyvadapter';
+
 import schema from '../../graphql/schema.js';
 import models from '../../database/models/index.js';
 import connect from '../../database/client.js';
 
 import { getUserId } from '../../libs/auth.js';
+
+const REDIS_URL = process.env.REDIS_URL;
 
 const cors = Cors();
 
@@ -19,6 +24,8 @@ const apolloServer = new ApolloServer({
 			userId: req && req.headers.authorization ? getUserId(req) : null,
 		};
 	},
+	csrfPrevention: true,
+  cache: new KeyvAdapter(new Keyv(REDIS_URL)),
 	introspection: true,
 	plugins: [
 		ApolloServerPluginLandingPageGraphQLPlayground({
