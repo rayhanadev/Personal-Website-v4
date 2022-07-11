@@ -1,0 +1,24 @@
+type Query {
+	currentUser: User
+}
+
+type Mutation {
+	signup(email: String!, username: String!, password: String!): AuthPayload
+	login(username: String!, password: String!): AuthPayload
+}
+
+type UserError {
+	message: String!
+}
+
+type User {
+	username: String!
+	email: String!
+}
+
+type Auth {
+	user: User
+	token: String
+}
+
+union AuthPayload = Auth | UserError
