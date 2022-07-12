@@ -3,65 +3,49 @@ entrypoint = "server/server.js"
 
 hidden = [".env.local", ".config", "client/.next"]
 
+[env]
+XDG_CONFIG_HOME = "/home/runner/.config"
+PATH = "/home/runner/$REPL_SLUG/.config/bin:$PATH"
+npm_config_prefix = "/home/runner/$REPL_SLUG/.config/"
+
 [nix]
 channel = "stable-22_05"
 
 [packager]
 language = "nodejs"
 
-[packager.features]
-packageSearch = false
-guessImports = false
+	[packager.features]
+	packageSearch = false
+	guessImports = false
 
 [languages.mdx]
 pattern = "**/*.mdx"
 syntax = "markdown"
 
 [languages.javascript]
-pattern = "**/*.js"
+pattern = "**/{*.js,*.jsx,*.ts,*.tsx}"
 syntax = "javascript"
 
-[languages.javascript.languageServer]
-start = [ "typescript-language-server", "--stdio" ]
-run = "yarn start"
-entrypoint = "server/server.js"
+	[languages.javascript.languageServer]
+	start = [ "typescript-language-server", "--stdio" ]
 
-[debugger]
-support = true
+[languages.css]
+pattern = "**/{*.css,*.sass,*.scss,*.less}"
+syntax = "css"
 
-  [debugger.interactive]
-  transport = "localhost:0"
-  startCommand = [ "dap-node" ]
+	[languages.css.languageServer]
+	start = [ "css-languageserver", "--stdio" ]
 
-    [debugger.interactive.initializeMessage]
-    command = "initialize"
-    type = "request"
+[languages.emmet]
+pattern = "**/{*.html,*.css,*.scss,*.js,*.jsx,*.ts,*.tsx,*.haml,*.xml,*.xsl,*.pug,*.slim,*.sass,*.styl,*.less,*.sss,*.hbs}"
+syntax = "css"
 
-      [debugger.interactive.initializeMessage.arguments]
-      clientID = "replit"
-      clientName = "replit.com"
-      columnsStartAt1 = true
-      linesStartAt1 = true
-      locale = "en-us"
-      pathFormat = "path"
-      supportsInvalidatedEvent = true
-      supportsProgressReporting = true
-      supportsRunInTerminalRequest = true
-      supportsVariablePaging = true
-      supportsVariableType = true
+	[languages.emmet.languageServer]
+	start = [ "ls_emmet", "--stdio" ]
 
-    [debugger.interactive.launchMessage]
-    command = "launch"
-    type = "request"
-    
-      [debugger.interactive.launchMessage.arguments]  
-      args = []
-      console = "externalTerminal"
-      cwd = "."
-      environment = []
-      pauseForSourceMap = false
-      program = "./index.js"
-      request = "launch"
-      sourceMaps = true
-      stopOnEntry = false
-      type = "pwa-node"
+[languages.graphql]
+pattern = "**/{*.graphql,*.gql}"
+syntax = "graphql"
+
+	[languages.graphql.languageServer]
+	start = [ "graphql-lsp", "server", "-m", "stream", "-c", "graphql.config.json" ]
