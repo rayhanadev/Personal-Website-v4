@@ -13,6 +13,16 @@
 					"custom-properties": false
 				}
 			}
+		],
+		[
+			"postcss-fontpath",
+			{
+				"formats": [
+					{ "type": "woff2", "ext": "woff2" },
+					{ "type": "truetype", "ext": "ttf" },
+					{ "type": "opentype", "ext": "otf" }
+				]
+			}
 		]
 	]
 }

@@ -1,0 +1,34 @@
+$theme-light: (
+	primary-1: #14131e,
+	primary-2: #272639,
+	primary-3: #41405c,
+	accent-1: #63accb,
+	accent-2: #7ad3e9,
+	accent-3: #ace3f0,
+	background-1: #e3e3e3,
+	background-2: #f3f3f3,
+	background-3: #ffffff,
+	highlight-color: rgba(122, 211, 233, 0.8),
+	marked-color: rgba(227, 227, 227, 0.6),
+	selection-color: rgba(122, 211, 233, 0.2),
+);
+
+$theme-dark: (
+	primary-1: #f3f3f3,
+	primary-2: #e3e3e3,
+	primary-3: #bfbfbf,
+	accent-1: #59a6b8,
+	accent-2: #107fae,
+	accent-3: #3b6678,
+	background-1: #41405c,
+	background-2: #272639,
+	background-3: #14131e,
+	highlight-color: rgba(15, 154, 210, 0.8),
+	marked-color: rgba(68, 50, 100, 0.8),
+	selection-color: rgba(15, 154, 210, 0.2),
+);
+
+$themes: (
+	light: $theme-light,
+	dark: $theme-dark,
+);

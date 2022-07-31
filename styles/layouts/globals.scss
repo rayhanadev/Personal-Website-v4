@@ -1,0 +1,95 @@
+@use '../abstracts/fonts';
+@use '../abstracts/themes' as *;
+@use '../abstracts/mixins' as *;
+
+@font-face {
+	font-family: 'DM Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: fallback;
+	font-path: '/fonts/DMMono/DMMono-Regular';
+}
+
+@font-face {
+	font-family: 'DM Mono';
+	font-style: italic;
+	font-weight: 400;
+	font-display: fallback;
+	font-path: '/fonts/DMMono/DMMono-Italic';
+}
+
+@font-face {
+	font-family: 'Outfit';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: fallback;
+	font-path: '/fonts/Outfit/Outfit[wght]';
+}
+
+:root {
+	@include spread-map($theme-light);
+}
+
+[data-theme='dark'] {
+	@include spread-map($theme-dark);
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	background-color: var(--background-3);
+	transition: color 0.1s ease-in-out;
+	transition: background-color 0.1s ease-in-out;
+}
+
+html,
+body {
+	@include fonts.render(body, regular);
+
+	margin: 0;
+	padding: 0;
+	font-size: 78.125%;
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background-color: var(--selection-color);
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-track {
+	border-radius: 0.5rem;
+	background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 0.5rem;
+	background: var(--color-dim);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	border-radius: 0.5rem;
+	background: var(--color-main);
+}
+
+@media (max-width: 375px) {
+	html,
+	body {
+		font-size: 50%;
+	}
+
+	.container {
+		width: 350px;
+		margin: 2rem auto 0 auto;
+		padding: 10px 20px;
+	}
+}

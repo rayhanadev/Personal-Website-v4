@@ -58,6 +58,10 @@ export default withPlugins(
 				use: ['@svgr/webpack'],
 			});
 
+			config.infrastructureLogging = {
+				level: 'error',
+			};
+
 			if (!dev) {
 				// Replace React with Preact only in client production build
 				Object.assign(config.resolve.alias, {

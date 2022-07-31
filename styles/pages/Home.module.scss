@@ -1,0 +1,36 @@
+@use '../abstracts/fonts';
+
+.container {
+	padding: 0 2rem;
+}
+
+.main {
+	min-height: 100vh;
+	padding: 4rem 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	margin: 0;
+	font-size: 6rem;
+	color: var(--primary-2);
+	@include fonts.render(display, bold);
+	text-align: center;
+}
+
+.button {
+	border: 2px solid var(--background-1);
+	border-radius: 10px;
+	background: var(--background-2);
+	box-shadow: 0 0 5px var(--background-1);
+	padding: 10px;
+	margin: 10px;
+	font-size: 2.4rem;
+	color: var(--primary-2);
+	@include fonts.render(body, semibold);
+	cursor: pointer;
+}
